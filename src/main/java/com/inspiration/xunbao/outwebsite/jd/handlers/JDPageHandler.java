@@ -1,10 +1,8 @@
-package com.inspiration.xunbao.handlers.jd;
+package com.inspiration.xunbao.outwebsite.jd.handlers;
 
-import com.inspiration.xunbao.handlers.PageHandler;
-import com.inspiration.xunbao.pages.WebPage;
+import com.inspiration.xunbao.crawler.handler.PageHandler;
+import com.inspiration.xunbao.crawler.page.WebPage;
 import org.w3c.dom.Document;
-
-import java.util.concurrent.BlockingQueue;
 
 /**
  * @author yaotianchi

@@ -1,4 +1,4 @@
-package com.inspiration.xunbao.pages;
+package com.inspiration.xunbao.crawler.page;
 
 import lombok.Data;
 

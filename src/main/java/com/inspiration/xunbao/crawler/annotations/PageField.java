@@ -1,5 +1,5 @@
-package com.inspiration.xunbao.annotations;
-import com.inspiration.xunbao.enums.HtmlLabel;
+package com.inspiration.xunbao.crawler.annotations;
+import com.inspiration.xunbao.crawler.enums.HtmlLabel;
 
 import java.lang.annotation.*;
 

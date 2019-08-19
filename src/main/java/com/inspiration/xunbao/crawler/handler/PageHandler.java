@@ -1,10 +1,9 @@
-package com.inspiration.xunbao.handlers;
+package com.inspiration.xunbao.crawler.handler;
 
-import com.inspiration.xunbao.pages.WebPage;
+import com.inspiration.xunbao.crawler.page.WebPage;
 import org.w3c.dom.Document;
 
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public interface PageHandler<T extends WebPage> {

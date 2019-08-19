@@ -1,4 +1,4 @@
-package com.inspiration.xunbao.enums;
+package com.inspiration.xunbao.crawler.enums;
 
 public enum  HtmlLabel {
 

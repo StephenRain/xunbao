@@ -1,6 +1,6 @@
 package com.inspiration.xunbao;
 
-import com.inspiration.xunbao.starter.SpiderStarter;
+import com.inspiration.xunbao.crawler.starter.SpiderStarter;
 
 /**
  * @author yaotianchi
@@ -9,8 +9,10 @@ import com.inspiration.xunbao.starter.SpiderStarter;
 public class MyMain {
 
     public static void main(String[] args) {
-        new SpiderStarter()
-                .pagePath("com.inspiration.xunbao.pages")
+        SpiderStarter.create()
+                .backagePath("com.inspiration.xunbao.outwebsite")
+                .beginUrls("https://www.jd.com/allSort.aspx")
+                .thread(1)
                 .start();
     }
 }

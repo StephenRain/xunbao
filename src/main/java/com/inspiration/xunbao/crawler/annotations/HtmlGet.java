@@ -1,6 +1,6 @@
-package com.inspiration.xunbao.annotations;
+package com.inspiration.xunbao.crawler.annotations;
 
-import com.inspiration.xunbao.enums.HtmlGetType;
+import com.inspiration.xunbao.crawler.enums.HtmlGetType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

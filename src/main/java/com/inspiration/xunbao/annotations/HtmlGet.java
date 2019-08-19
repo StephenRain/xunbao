@@ -1,5 +1,7 @@
 package com.inspiration.xunbao.annotations;
 
+import com.inspiration.xunbao.enums.HtmlGetType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

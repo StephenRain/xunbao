@@ -6,6 +6,6 @@ import com.inspiration.xunbao.crawler.http.HttpRes;
 public interface Download {
 
 
-    HttpRes download(HttpRequest request, int timeout);
+    HttpRes download();
 
 }

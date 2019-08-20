@@ -6,11 +6,11 @@ import com.inspiration.xunbao.crawler.enums.PersistenceType;
 import com.inspiration.xunbao.crawler.http.HttpRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.reflections.Reflections;
-import org.reflections.util.ConfigurationBuilder;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -30,9 +30,12 @@ public class SpiderStarter implements Runnable {
 
     ExecutorService threadPool;
 
+    PersistenceType persistenceType;
+
 
 
     private SpiderStarter() {
+        persistenceType = PersistenceType.CONSOLE;
     }
 
     ;
@@ -52,14 +55,17 @@ public class SpiderStarter implements Runnable {
         return this;
     }
 
+    public SpiderStarter persistent(PersistenceType persistenceType) {
+        this.persistenceType = persistenceType;
+        return this;
+    }
+
     public void start() {
         threadPool = Executors.newFixedThreadPool(this.threadCount);
         Future<?> future = threadPool.submit(this);
         try {
             Object o = future.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -69,10 +75,6 @@ public class SpiderStarter implements Runnable {
     @Override
     public void run() {
         log.debug("爬虫启动...");
-        // 准备阶段，将初始URL组装为 HttpRequest
-        List<HttpRequest> httpRequests = HttpRequest.ofAll(this.beginUrls);
-        // 放入队列中
-        HttpClientDownloader
 
 
         // 扫描包
@@ -82,16 +84,26 @@ public class SpiderStarter implements Runnable {
             log.debug("发现Page类：" + page.getName());
             Page pageAnnotation = page.getAnnotation(Page.class);
             String name = pageAnnotation.name();
-            String urlPattern = pageAnnotation.urlPattern();
-            PersistenceType persistenceType = pageAnnotation.persistentType();
-
-
-
-
+            Field[] fields = page.getDeclaredFields();
+            Arrays.stream(fields)
+                    .filter((field -> field.isAnnotationPresent(Page.class)))
+                    .forEach(field -> {
+                        Page pageAnno = field.getAnnotation(Page.class);
+                        field.getType().getName();
+                        String name1 = pageAnno.name();
+                    });
 
 
         });
         //
+
+
+
+
+        // 准备阶段，将初始URL组装为 HttpRequest
+        List<HttpRequest> httpRequests = HttpRequest.ofAll(this.beginUrls);
+        // 放入队列中
+        HttpClientDownloader.intoList(httpRequests);
 
     }
 

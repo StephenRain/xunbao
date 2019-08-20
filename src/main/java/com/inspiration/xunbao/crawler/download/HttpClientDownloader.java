@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author yaotianchi
@@ -42,6 +43,8 @@ public class HttpClientDownloader extends AbstractDownloader{
     private CloseableHttpClient httpClient;
 
     private HttpClientContext cookieContext;
+
+
 
     private HttpClientDownloader() {
 
@@ -89,9 +92,8 @@ public class HttpClientDownloader extends AbstractDownloader{
     }
 
 
-    @Override
-    public HttpRes download(HttpRequest request, int timeout) {
 
+    public HttpRes request(HttpRequest request) {
         HttpRes resp = new HttpRes();
         HttpMethod method = request.getType();
         HttpRequestBase reqObj = null;
@@ -159,8 +161,27 @@ public class HttpClientDownloader extends AbstractDownloader{
         return resp;
     }
 
+
     @Override
-    void intoRequestQueue(HttpRequest httpRequest) {
-        this.requestQueue.add(httpRequest);
+    public HttpRes download() {
+
+
+        while(!out) {
+            HttpRequest request = null;
+            try {
+                request = requestQueue.poll(2, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if(request== null) break;
+
+            HttpRes httpRes = this.request(request);
+
+
+        }
+        return null;
     }
+
+
 }

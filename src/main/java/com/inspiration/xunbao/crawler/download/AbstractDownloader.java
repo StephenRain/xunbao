@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.regex.Matcher;
@@ -20,11 +21,27 @@ public abstract class AbstractDownloader implements Download {
     /**
      * 待请求的网址队列
      */
-    BlockingQueue<HttpRequest> requestQueue = new LinkedBlockingQueue<>();
+    static BlockingQueue<HttpRequest> requestQueue = new LinkedBlockingQueue<>();
+
+
+    /**
+     * 用来标记是请求队列中请求是否下载完成
+     */
+    volatile boolean out = false;
 
     private static Log log = LogFactory.getLog(AbstractDownloader.class);
 
     private static final Pattern charsetPattern = Pattern.compile("(?i)\\bcharset=\\s*\"?([^\\s;\"]*)");
+
+
+
+    public static void into(HttpRequest request) {
+        requestQueue.add(request);
+    }
+    public static void intoList(List<HttpRequest> requestList) {
+        requestQueue.addAll(requestList);
+    }
+
 
     private String getCharsetFromContentType(String contentType) {
         if (contentType == null)
@@ -85,10 +102,5 @@ public abstract class AbstractDownloader implements Download {
         return bis;
     }
 
-    /**
-     * 将任务添加进队列中
-     * @param httpRequest
-     */
-    abstract void intoRequestQueue(HttpRequest httpRequest);
 
 }

@@ -15,10 +15,11 @@ public @interface Page {
 
     /**
      * 需要爬取页面的url
+     * 先不考虑
      *
      * @return
      */
-    String urlPattern() default "";
+//    String urlPattern() default "";
 
     /**
      * 该页面的名称
@@ -27,11 +28,6 @@ public @interface Page {
      */
     String name() default "";
 
-    /**
-     * 爬取的数据的保存方式
-     * @return
-     */
-    PersistenceType persistentType() default PersistenceType.CONSOLE;
 
 
 }

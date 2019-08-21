@@ -2,10 +2,16 @@ package com.inspiration.xunbao.crawler.download;
 
 import com.inspiration.xunbao.crawler.http.HttpRequest;
 import com.inspiration.xunbao.crawler.http.HttpRes;
+import org.junit.Test;
 
-public interface Download {
+public class HttpClientDownloaderTest {
 
+    @Test
+    public void request() {
 
-    HttpRes download(HttpRequest request,boolean useProxy);
+    }
 
+    @Test
+    public void download() {
+    }
 }

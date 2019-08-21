@@ -12,7 +12,6 @@ public class MyMain {
         SpiderStarter.create()
                 .backagePath("com.inspiration.xunbao.outwebsite")
                 .beginUrls("https://www.jd.com/allSort.aspx")
-                .thread(1)
-                .start();
+                .go();
     }
 }

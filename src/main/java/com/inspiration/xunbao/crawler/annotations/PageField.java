@@ -1,5 +1,6 @@
 package com.inspiration.xunbao.crawler.annotations;
 import com.inspiration.xunbao.crawler.enums.HtmlLabel;
+import com.inspiration.xunbao.crawler.enums.ValueType;
 
 import java.lang.annotation.*;
 
@@ -9,14 +10,9 @@ import java.lang.annotation.*;
 @Documented
 public @interface PageField {
 
-    String cssPath() default "";
+    String name() default "";
 
-    HtmlLabel label() default HtmlLabel.TEXT;
+    String key() default "";
 
-    /**
-     * 如果是a标签的话是否进入该页面抓取
-     * @return
-     */
-    boolean intoOrNot() default false;
-
+    ValueType value() default ValueType.TEXT;
 }

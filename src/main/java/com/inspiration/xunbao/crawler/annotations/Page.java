@@ -1,7 +1,5 @@
 package com.inspiration.xunbao.crawler.annotations;
 
-import com.inspiration.xunbao.crawler.enums.PersistenceType;
-
 import java.lang.annotation.*;
 
 
@@ -19,7 +17,7 @@ public @interface Page {
      *
      * @return
      */
-//    String urlPattern() default "";
+    String urlPattern();
 
     /**
      * 该页面的名称

@@ -8,11 +8,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CSSPath {
-
+public @interface Selector {
 
     String value();
-
-
-
 }

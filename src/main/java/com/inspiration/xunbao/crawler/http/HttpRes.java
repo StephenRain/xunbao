@@ -17,4 +17,10 @@ public class HttpRes {
 
     private int status;
 
+    /**
+     * todo 需要设置下
+     * 表示请求那个URL响应的该结果
+     */
+    private String requestedURL;
+
 }

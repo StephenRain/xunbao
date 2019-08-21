@@ -1,6 +1,5 @@
 package com.inspiration.xunbao.crawler.http;
 
-import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.http.HttpMethod;
@@ -20,33 +19,33 @@ public class HttpRequest {
     /**
      * 请求方式
      */
-    private HttpMethod type;
+    private HttpMethod type = HttpMethod.GET;
 
-    private String charset;
+    private String charset = "utf-8";
 
-    private Map<String, String> params;
+    private Map<String, String> params = new HashMap<>(8);
 
-    private Map<String, String> cookies;
+    private Map<String, String> cookies = new HashMap<>(8);
 
-    private Map<String, String> headers;
+    private Map<String, String> headers = new HashMap<>(8);
+
+    private Map<String, String> body = new HashMap<>(16);
+
+    public HttpRequest() {
+        headers.put("Content-Type", "application/json; charset=utf-8");
+    }
 
     public static HttpRequest of(String url) {
         return new HttpRequest().setUrl(url);
     }
 
-    public static List<HttpRequest> ofAll(String... urls) {
-        List<HttpRequest> list = new ArrayList<>();
-        Arrays.stream(urls).forEach((url) -> {
-            list.add(of(url));
-        });
-        return list;
+    public void addHeader(String key, String value) {
+        headers.put(key, value);
+    }
+
+    public void addPostField(String key, String value) {
+        body.put(key, value);
     }
 
 
-    {
-        charset = "utf-8";
-        params = new HashMap<>(8);
-        cookies = new HashMap<>(8);
-        headers = new HashMap<>(8);
-    }
 }

@@ -5,5 +5,8 @@ package com.inspiration.xunbao.crawler.enums;
  * @date 2019/8/19
  */
 public enum PersistenceType {
-    MYSQL,CONSOLE
+    MYSQL,
+    CONSOLE,
+    REDIS,
+    FILE
 }

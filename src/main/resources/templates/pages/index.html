@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript" src="/js/common-function.js"></script>
+</head>
+<body>
+<!--导航条-->
+<nav>
+    <a href="#">注册/登录</a>
+</nav>
+
+<div id="center">
+    <!--双击切换框-->
+    <div class="switch-div" ondblclick="showUploadPage()">
+        双击切换【搜索/上传】
+    </div>
+
+    <!--搜索框-->
+    <div id="search-wrapper">
+        <form action="search" method="get">
+            <input id="search-box" class="input-big" type="text" name="input" placeholder="输入你想搜索的资源"
+                   autofocus autocomplete="on"/>
+            <button type="submit" class="submit-btn">搜索</button>
+        </form>
+    </div>
+
+    <!--上传框-->
+    <div id="upload-div" hidden>
+        <form id="upload-form" action="upload" method="post" enctype="multipart/form-data">
+            <label>资源空间(必选)</label>
+            <input type="text" class="input-common" name="space" placeholder="请选择资源空间"><br>
+            <label>你的大名(必选)</label>
+            <input name="author" class="input-common" placeholder="请输入你的大名"/><br>
+            <label>资源(必选)</label>
+            <input id="upload-input" type="file" name="file"><br>
+            <label>资源类型(可选)</label>
+            <select name="type" class="input-common">
+                <optgroup label="计算机/IT">
+                    <option value="0">编程语言</option>
+                    <option value="1">数据库</option>
+                    <option value="2">编程工具</option>
+                    <option value="3">知识分享</option>
+                </optgroup>
+            </select><br>
+            <label>资源标签(可选)</label>
+            <input type="text" class="input-common" name="label" placeholder="请输入自定义资源标签，多个用空格分割"><br>
+            <button type="submit" id="" class="submit-btn">上传资源</button>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+</html>

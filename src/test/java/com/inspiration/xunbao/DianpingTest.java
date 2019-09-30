@@ -2,6 +2,7 @@ package com.inspiration.xunbao;
 
 import com.inspiration.xunbao.crawler.http.HttpRequest;
 import com.inspiration.xunbao.crawler.http.HttpRes;
+import com.inspiration.xunbao.crawler.starter.SpiderStarter;
 import com.inspiration.xunbao.crawler.util.HttpClientUtil;
 import org.junit.Test;
 import org.springframework.http.HttpMethod;
@@ -21,12 +22,12 @@ public class DianpingTest {
         request.setUrl("http://www.dianping.com/search/map/ajax/json");
         request.setType(HttpMethod.POST);
         request.addHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
-        request.addHeader("Cookie","_lxsdk_cuid=16c6aff829cc8-0a70f465347c0a-e353165-100200-16c6aff829dc8; _lxsdk=16c6aff829cc8-0a70f465347c0a-e353165-100200-16c6aff829dc8; _hc.v=7e57e4c9-1894-4457-bba3-61959bf6d5cb.1565163226; Hm_lvt_e6f449471d3527d58c46e24efb4c343e=1565578368; cy=2; cye=beijing; _lx_utm=utm_source%3DBaidu%26utm_medium%3Dorganic; s_ViewType=10; _lxsdk_s=16cb303fc78-9c-be2-244%7C%7C37");
+        request.addHeader("Cookie","_lxsdk_cuid=16c6aff829cc8-0a70f465347c0a-e353165-100200-16c6aff829dc8; _lxsdk=16c6aff829cc8-0a70f465347c0a-e353165-100200-16c6aff829dc8; _hc.v=7e57e4c9-1894-4457-bba3-61959bf6d5cb.1565163226; Hm_lvt_e6f449471d3527d58c46e24efb4c343e=1565578368; cy=2; cye=beijing; s_ViewType=10; _lx_utm=utm_source%3DBaidu%26utm_medium%3Dorganic; _lxsdk_s=16cbc2c2dc4-974-542-7be%7C%7C4");
         request.addHeader("Referer","http://www.dianping.com/search/map/keyword/2/0_%E5%AE%B6%E6%94%BF");
         request.addHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36");
 
         request.addPostField("cityId","2");
-        request.addPostField("cityEnName","beijing");
+        request.addPostField("cityEnName","anhui");
         request.addPostField("promoId","0");
         request.addPostField("shopType","");
         request.addPostField("categoryId","");
@@ -46,6 +47,15 @@ public class DianpingTest {
 
         HttpRes response = HttpClientUtil.getInstace().request(request,false);
         System.out.println("response = " + response);
+
+    }
+
+
+    @Test
+    public void test2(){
+        SpiderStarter.create()
+                .backagePath("com.inspiration.xunbao.outwebsite.dianping")
+                .beginUrls("http://www.dianping.com/search/map/ajax/json");
 
     }
 

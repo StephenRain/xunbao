@@ -45,6 +45,7 @@ public class HttpClientUtil {
 
     private HttpClientContext cookieContext;
 
+    // todo 单例的会出问题呀
     private HttpRequestBase reqObj = null;
 
     /**
@@ -91,6 +92,7 @@ public class HttpClientUtil {
     @SneakyThrows
     public HttpRes request(HttpRequest request, boolean useProxy) {
         HttpRes resp = new HttpRes();
+        resp.setRequestedURL(request.getUrl());
         readyForRequest(request, useProxy);
         final CloseableHttpResponse response;
         try {

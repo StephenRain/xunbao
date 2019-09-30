@@ -1,6 +1,6 @@
 package com.inspiration.xunbao.crawler.page;
 
-import com.inspiration.xunbao.crawler.annotations.PageType;
+import com.inspiration.xunbao.crawler.enums.PageType;
 
 /**
  * 所有要爬取页面的公共接口

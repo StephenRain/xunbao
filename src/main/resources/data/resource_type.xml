@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+    <type id="0" name="计算机/IT">
+        <type id="0-0" name="编程语言">
+            <type id="0-0-0" name="JAVA"/>
+            <type id="0-0-1" name="JavaScript"/>
+        </type>
+
+        <type id="0-1" name="数据库">
+            <type id="0-1-0" name="关系型数据库">
+                <type id="0-1-0-0" name="MySQL"/>
+            </type>
+        </type>
+    </type>
+</types>

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: xunbao
+    converters:
+      preferred-json-mapper: fastjson
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+server:
+  tomcat:
+    max-connections: 200
+
+logging:
+  config: classpath:logback-spring.xml
+
+#upload:
+#  dest-dir : D:\data\xunbao\upload

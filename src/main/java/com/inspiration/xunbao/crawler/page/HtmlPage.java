@@ -1,6 +1,6 @@
 package com.inspiration.xunbao.crawler.page;
 
-import com.inspiration.xunbao.crawler.annotations.PageType;
+import com.inspiration.xunbao.crawler.enums.PageType;
 import lombok.Data;
 
 /**

@@ -14,4 +14,6 @@ public class MyMain {
                 .beginUrls("https://www.jd.com/allSort.aspx")
                 .go();
     }
+
+
 }

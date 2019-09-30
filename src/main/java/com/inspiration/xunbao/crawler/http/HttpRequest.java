@@ -4,7 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.http.HttpMethod;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author yaotianchi
@@ -14,22 +15,21 @@ import java.util.*;
 @Accessors(chain = true)
 public class HttpRequest {
 
-    private String url;
+    protected String url;
 
-    /**
-     * 请求方式
-     */
-    private HttpMethod type = HttpMethod.GET;
+    protected HttpMethod type = HttpMethod.GET;
 
-    private String charset = "utf-8";
+    protected String charset = "utf-8";
 
-    private Map<String, String> params = new HashMap<>(8);
+    protected boolean useProxy = false;
 
-    private Map<String, String> cookies = new HashMap<>(8);
+    protected Map<String, String> params = new HashMap<>(8);
 
-    private Map<String, String> headers = new HashMap<>(8);
+    protected Map<String, String> cookies = new HashMap<>(8);
 
-    private Map<String, String> body = new HashMap<>(16);
+    protected Map<String, String> headers = new HashMap<>(16);
+
+    protected Map<String, String> body = new HashMap<>(16);
 
     public HttpRequest() {
         headers.put("Content-Type", "application/json; charset=utf-8");

@@ -1,4 +1,4 @@
-package com.inspiration.xunbao.crawler.annotations;
+package com.inspiration.xunbao.crawler.enums;
 
 /**
  * 页面类型
